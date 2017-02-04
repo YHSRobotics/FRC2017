@@ -1,5 +1,14 @@
 *.class
 
+#gedit temporary files
+*~
+
+#computer specific configuration
+.classpath
+
+#Binaries
+/bin/
+
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
