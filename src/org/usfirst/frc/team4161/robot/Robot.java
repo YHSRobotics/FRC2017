@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
+//		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
 	}
 
 	/**
@@ -99,7 +99,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 		
 		// start the autonomous commands.
-		driveWithJoystick = new DriveWithJoystick(OI.DriveJoystick);
+		driveWithJoystick = new DriveWithJoystick(OI.LJoystick, OI.RJoystick);
 		driveWithJoystick.start();// start it!
 	}
 
