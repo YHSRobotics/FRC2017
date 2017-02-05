@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
+		RobotMap.RWheels.setInverted(true);//invert the right side.
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 //		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
