@@ -1,5 +1,8 @@
 package org.usfirst.frc.team4161.robot;
 
+import org.usfirst.frc.team4161.robot.sensors.UltrasonicSensor;
+
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Spark;
 //import edu.wpi.first.wpilibj.Victor;
 
@@ -22,4 +25,6 @@ public class RobotMap {
 	private final static int LWheelsID = 0, RWheelsID = 1;
 	
 	public static Spark LWheels = new Spark(LWheelsID), RWheels = new Spark(RWheelsID);
+	
+	public static UltrasonicSensor ultrasonic = new UltrasonicSensor(new AnalogInput(0)); 
 }
