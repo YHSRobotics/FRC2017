@@ -14,7 +14,7 @@ public class UltrasonicSensor {
 	 * The number of bits of oversampling, as described in the AnalogInput api.
 	 * Average sets the average number of bits.
 	 */
-	private static int oversample = 16, average = 4;
+	private static int oversample = 1, average = 1;
 	
 	/**
 	 * millimeters per volt.
@@ -37,8 +37,9 @@ public class UltrasonicSensor {
 	 * @return Meter distance sensed by the sensor
 	 */
 	public double getMDistance(){
-		double distance = ultrasonic.getAverageVoltage()/oversample;
+		double distance = ultrasonic.getAverageVoltage();
 		distance *= scalingFactor;//scale to millimeters
+		System.out.println(distance);
 		distance /= 1000;//scale to meters
 		return distance;
 	}
