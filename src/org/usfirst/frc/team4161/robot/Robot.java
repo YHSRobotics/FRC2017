@@ -8,7 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
+import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -20,10 +22,11 @@ import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final HopperActuator hopperActuator = new HopperActuator(RobotMap.HopperActuator);
 	public static OI oi;
 
 	Command autonomousCommand;
-	Command driveWithJoystick;
+	Command driveWithJoystick, joystickActuatorControl;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 
 	/**
@@ -102,6 +105,10 @@ public class Robot extends IterativeRobot {
 		// start the autonomous commands.
 		driveWithJoystick = new DriveWithJoystick(OI.LJoystick, OI.RJoystick);
 		driveWithJoystick.start();// start it!
+		
+		//start the actuator control
+		joystickActuatorControl = new JoystickActuatorControl(OI.LJoystick);
+		joystickActuatorControl.start();
 	}
 
 	/**
