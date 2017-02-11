@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 package org.usfirst.frc.team4161.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -88,6 +86,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
+		SmartDashboard.putNumber("Ultrasonic: ", RobotMap.ultrasonic.getMDistance());
 		Scheduler.getInstance().run();
 	}
 
