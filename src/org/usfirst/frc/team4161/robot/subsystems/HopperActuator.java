@@ -19,7 +19,7 @@ public class HopperActuator extends Subsystem {
 	 * @param speed Intensity, in range [0,1]
 	 */
 	public void setIntensity(double speed){
-		motor.setSpeed(Math.abs(speed));
+		motor.setSpeed(Math.abs(speed/2));
 	}
 	
 	/**
