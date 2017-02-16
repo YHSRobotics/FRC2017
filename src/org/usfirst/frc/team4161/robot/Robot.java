@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
+import org.usfirst.frc.team4161.robot.commands.SpinHopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
 
@@ -40,6 +41,11 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 //		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
+		
+		//set the two buttons for hopper actuator control
+		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.5));
+		OI.highHopperActuator.whileHeld(new SpinHopperActuator(1));
+		
 	}
 
 	/**
@@ -108,7 +114,7 @@ public class Robot extends IterativeRobot {
 		
 		//start the actuator control
 		joystickActuatorControl = new JoystickActuatorControl(OI.LJoystick);
-		joystickActuatorControl.start();
+//		joystickActuatorControl.start();
 	}
 
 	/**

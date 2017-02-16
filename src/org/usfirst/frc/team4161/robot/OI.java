@@ -2,6 +2,7 @@ package org.usfirst.frc.team4161.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 
@@ -17,8 +18,11 @@ public class OI {
 	// number it is.
 	// Joystick stick = new Joystick(port);
 	// Button button = new JoystickButton(stick, buttonNumber);
-	
-	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(1);;
+
+	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(1);
+
+	public static JoystickButton lowHopperActuator = new JoystickButton(LJoystick, 4),
+			highHopperActuator = new JoystickButton(LJoystick, 5);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
