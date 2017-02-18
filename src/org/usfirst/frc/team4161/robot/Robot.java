@@ -12,6 +12,7 @@ import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
 import org.usfirst.frc.team4161.robot.commands.SpinHopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
+import org.usfirst.frc.team4161.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,6 +24,7 @@ import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final Shooter shooter = new Shooter();
 	public static final HopperActuator hopperActuator = new HopperActuator(RobotMap.HopperActuator);
 	public static OI oi;
 
@@ -45,6 +47,7 @@ public class Robot extends IterativeRobot {
 		//set the two buttons for hopper actuator control
 		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.5));
 		OI.highHopperActuator.whileHeld(new SpinHopperActuator(1));
+		OI.shooterButton.whileHeld(new SpinHopperActuator(1));
 		
 	}
 

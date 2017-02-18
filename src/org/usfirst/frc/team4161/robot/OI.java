@@ -21,8 +21,9 @@ public class OI {
 
 	public static Joystick LJoystick = new Joystick(0), RJoystick = new Joystick(1);
 
-	public static JoystickButton lowHopperActuator = new JoystickButton(LJoystick, 4),
-			highHopperActuator = new JoystickButton(LJoystick, 5);
+	public static JoystickButton lowHopperActuator = new JoystickButton(RJoystick, 4),
+			highHopperActuator = new JoystickButton(RJoystick, 5),
+			shooterButton = new JoystickButton(RJoystick, 1);
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
