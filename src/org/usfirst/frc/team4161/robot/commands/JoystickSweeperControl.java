@@ -14,11 +14,21 @@ public class JoystickSweeperControl extends Command {
 
 	private Joystick js;
 	private Sweeper sweeper= Robot.sweeper;
+	private boolean reverse;
+	private double scaling;
 
-	public JoystickSweeperControl(Joystick joystick) {
+	public JoystickSweeperControl(Joystick joystick){
+		this(joystick, 1, false);
+	}
+	
+	public JoystickSweeperControl(Joystick joystick, double scaling, boolean reverse) {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		js = joystick;
+		this.reverse = reverse;
+		this.scaling = scaling;
+		if(scaling < 0 || scaling > 1)
+			throw new IllegalArgumentException("Scaling must be in range [0,1]! Invalid: " + scaling);
 		requires(sweeper);
 	}
 
@@ -31,7 +41,8 @@ public class JoystickSweeperControl extends Command {
 	protected void execute() {
 		double power = js.getZ();//get power (in range [-1,1])
 		
-		power *= -1;//negate for natural feeling control
+		if(!reverse)
+			power *= -1;//negate for natural feeling control
 		
 		//scale into range [0,1]
 		power++;

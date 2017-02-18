@@ -52,7 +52,11 @@ public class Robot extends IterativeRobot {
 		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.5));
 		OI.highHopperActuator.whileHeld(new SpinHopperActuator(1));
 		OI.shooterButton.whileHeld(new JoystickShooterControl(OI.RJoystick));
+		
+		//forward sweeper control
 		OI.sweeperButton.whileHeld(new JoystickSweeperControl(OI.LJoystick));
+		//backwards sweeper (partial power) control.
+		OI.sweeperReverseButton.whileHeld(new JoystickSweeperControl(OI.LJoystick, 1/2, true));
 		
 	}
 
