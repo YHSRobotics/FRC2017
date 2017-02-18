@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
 import org.usfirst.frc.team4161.robot.commands.JoystickShooterControl;
+import org.usfirst.frc.team4161.robot.commands.JoystickSweeperControl;
 import org.usfirst.frc.team4161.robot.commands.SpinHopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
@@ -51,6 +52,7 @@ public class Robot extends IterativeRobot {
 		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.5));
 		OI.highHopperActuator.whileHeld(new SpinHopperActuator(1));
 		OI.shooterButton.whileHeld(new JoystickShooterControl(OI.RJoystick));
+		OI.sweeperButton.whileHeld(new JoystickSweeperControl(OI.LJoystick));
 		
 	}
 
