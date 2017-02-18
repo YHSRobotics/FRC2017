@@ -22,7 +22,7 @@ public class Sweeper extends Subsystem {
 	 */
 	public void setSweeperSpeed(double speed) {
 
-		sweeper.set(speed/2);
+		sweeper.set(-speed*0.75);
 
 	}
 	
