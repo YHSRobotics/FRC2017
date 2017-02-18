@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 */
 public class Shooter extends Subsystem {
    
-	Talon ballShooter = RobotMap.BallCollector;
+	Talon ballShooter = RobotMap.shooterMotor;
    // Put methods for controlling this subsystem
    // here. Call these from Commands.
 	
