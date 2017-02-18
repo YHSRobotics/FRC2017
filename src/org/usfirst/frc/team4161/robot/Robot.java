@@ -14,6 +14,7 @@ import org.usfirst.frc.team4161.robot.commands.SpinHopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.Shooter;
+import org.usfirst.frc.team4161.robot.subsystems.Sweeper;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,6 +27,7 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Shooter shooter = new Shooter();
+	public static final Sweeper sweeper = new Sweeper();
 	public static final HopperActuator hopperActuator = new HopperActuator(RobotMap.HopperActuator);
 	public static OI oi;
 

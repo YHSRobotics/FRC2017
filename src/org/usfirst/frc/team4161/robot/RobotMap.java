@@ -23,13 +23,14 @@ public class RobotMap {
 	// number and the module. For example you with a rangefinder:
 	// public static int rangefinderPort = 1;
 	// public static int rangefinderModule = 1;
-	private final static int LWheelsID = 0, RWheelsID = 1, HopperActuatorID = 2, ShooterMotorID = -1;
+	private final static int LWheelsID = 0, RWheelsID = 1, HopperActuatorID = 2, ShooterMotorID = -1,
+			SweeperMotorID = -1;
 	
 	public static Spark LWheels = new Spark(LWheelsID), RWheels = new Spark(RWheelsID);
 	
 	public static Talon HopperActuator = new Talon(HopperActuatorID);
 	
-	public static Talon shooterMotor = new Talon(ShooterMotorID);
+	public static Talon shooterMotor = new Talon(ShooterMotorID), sweeperMotor = new Talon(SweeperMotorID);
 	
 	public static UltrasonicSensor ultrasonic = new UltrasonicSensor(new AnalogInput(0)); 
 }
