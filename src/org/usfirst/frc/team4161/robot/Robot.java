@@ -11,6 +11,7 @@ import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
 import org.usfirst.frc.team4161.robot.commands.JoystickShooterControl;
 import org.usfirst.frc.team4161.robot.commands.JoystickSweeperControl;
+import org.usfirst.frc.team4161.robot.commands.KickbackAndShoot;
 import org.usfirst.frc.team4161.robot.commands.SpinHopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
@@ -51,7 +52,7 @@ public class Robot extends IterativeRobot {
 		//set the two buttons for hopper actuator control
 		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.5));
 		OI.highHopperActuator.whileHeld(new SpinHopperActuator(1));
-		OI.shooterButton.whileHeld(new JoystickShooterControl(OI.RJoystick));
+		OI.shooterButton.whileHeld(new KickbackAndShoot(OI.RJoystick));
 		
 		//forward sweeper control
 		OI.sweeperButton.whileHeld(new JoystickSweeperControl(OI.LJoystick));
