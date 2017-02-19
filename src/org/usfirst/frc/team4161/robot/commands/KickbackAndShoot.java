@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class KickbackAndShoot extends CommandGroup {
 
     public KickbackAndShoot(Joystick js) {
-    	addSequential(new TimedShooter(300, -.5));//kickback for 300 ticks
+    	addSequential(new TimedShooter(5, -1));//kickback for 300 ticks
     	addSequential(new JoystickShooterControl(js));
     }
 }

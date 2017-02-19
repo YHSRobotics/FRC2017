@@ -50,14 +50,14 @@ public class Robot extends IterativeRobot {
 //		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
 		
 		//set the two buttons for hopper actuator control
-		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.5));
+		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.75));
 		OI.highHopperActuator.whileHeld(new SpinHopperActuator(1));
 		OI.shooterButton.whileHeld(new KickbackAndShoot(OI.RJoystick));
 		
 		//forward sweeper control
 		OI.sweeperButton.whileHeld(new JoystickSweeperControl(OI.LJoystick));
 		//backwards sweeper (partial power) control.
-		OI.sweeperReverseButton.whileHeld(new JoystickSweeperControl(OI.LJoystick, 1/2, true));
+		OI.sweeperReverseButton.whileHeld(new JoystickSweeperControl(OI.LJoystick, 1/2, false));
 		
 	}
 

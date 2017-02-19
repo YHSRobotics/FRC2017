@@ -22,7 +22,7 @@ public class Shooter extends Subsystem {
 	 */
 	public void setShooterSpeed(double speed) {
 
-		ballShooter.set(speed/2);
+		ballShooter.set(speed);
 
 	}
 	
