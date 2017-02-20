@@ -57,7 +57,7 @@ public class Robot extends IterativeRobot {
 		//forward sweeper control
 		OI.sweeperButton.whileHeld(new JoystickSweeperControl(OI.LJoystick));
 		//backwards sweeper (partial power) control.
-		OI.sweeperReverseButton.whileHeld(new JoystickSweeperControl(OI.LJoystick, 1/2, false));
+		OI.sweeperReverseButton.whileHeld(new JoystickSweeperControl(OI.LJoystick, 1/2, true));
 		
 	}
 
@@ -135,6 +135,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+
+		SmartDashboard.putNumber("Sweeper Speed ", RobotMap.sweeperMotor.getSpeed());
+		SmartDashboard.putNumber("Shooter Speed ", RobotMap.shooterMotor.getSpeed());
 		Scheduler.getInstance().run();
 	}
 

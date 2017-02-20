@@ -41,14 +41,13 @@ public class JoystickSweeperControl extends Command {
 	protected void execute() {
 		double power = js.getZ();//get power (in range [-1,1])
 		
+		power *= -scaling;//negate and scale for natural feeling control
+		
 		//scale into range [0,1]
 		power++;
 		power /=2;
-
-		if(!reverse)
-			power *= -1;//negate for natural feeling control
-		
-		sweeper.setSweeperSpeed(power);
+		sweeper.setSweeperSpeed(reverse?-power:power);//set the power (reverse if set)
+//		System.out.println("pow: " + power + " rev: " + reverse);
 	}
 
 	/**
