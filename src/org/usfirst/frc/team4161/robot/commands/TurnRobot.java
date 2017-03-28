@@ -42,7 +42,7 @@ public class TurnRobot extends Command {
 				+ " ticks isRight: " + turnRight);
 
 	}
-
+	
 	/**
 	 * Turn the robot degrees number of degrees. A positive number will turn
 	 * clockwise, a negative number will turn counter clockwise.
@@ -51,8 +51,10 @@ public class TurnRobot extends Command {
 	 *            degrees to turn.
 	 */
 	public TurnRobot(double degrees) {
-		this(ConversionFactor.driveDegreesToTick(degrees), 
-				(degrees>0)?true:false);
+//		this(ConversionFactor.driveDegreesToTick(degrees), 
+//				(degrees>0)?true:false);
+		throw new IllegalStateException("You can't do that! This method isn't implemented...");
+		//TODO: Implement using the gyroscope.
 	}
 
 	/**

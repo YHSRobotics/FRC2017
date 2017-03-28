@@ -2,31 +2,19 @@ package org.usfirst.frc.team4161.robot;
 
 public class ConversionFactor {
 
-	public static double ticksToFeet = 10, driveTicksToDegree = 10, armTicksToDegree = 10;
+	public static double ftPerTick = 1/10, powerBase = 5;
 
+	
 	/**
-	 * Given the desired degree, returns the number of (estimated) ticks to
-	 * drive the robot for (at full power)
+	 * Returns the estimated velocity of the specified power percentage in ft/tick.
 	 * 
-	 * @param degrees
-	 *            Desired degree of arm turn. Negatives are ignored
-	 * @return The number of (estimated) ticks to turn arm for.
+	 * @param powerPercentage Percentage power. In range [0,100]
+	 * @return The differential of position, in ft/tick
 	 */
-	public static int driveDegreesToTick(double degrees) {
-		return (int) Math.abs(Math.round(Math.abs(degrees) * driveTicksToDegree));
+	private double getVelocity(int powerPercentage){
+		return ftPerTick*Math.pow(powerBase, (powerPercentage/100.0));
 	}
 
-	/**
-	 * Given the desired degree, returns the number of (estimated) ticks to turn
-	 * the arm for at full power.
-	 * 
-	 * @param degrees
-	 *            Desired degree of arm turn. Negatives are ignored
-	 * @return The number of (estimated) ticks to turn arm for.
-	 */
-	public static int armDegreesToTick(double degrees) {
-		return (int) Math.abs(Math.round(Math.abs(degrees) * armTicksToDegree));
-	}
 
 	/**
 	 * Given the desired distance, returns the number of (estimated) ticks to
@@ -36,8 +24,8 @@ public class ConversionFactor {
 	 *            Desired distance to drive robot. Negatives are ignored
 	 * @return The number of (estimated) ticks to drive for.
 	 */
-	public static int feetToTick(double feet) {
-		return (int) Math.abs(Math.round(Math.abs(feet) * ticksToFeet));
+	public static double feetToTick(double feet) {
+		return Math.abs(Math.round(Math.abs(feet)/ftPerTick));
 	}
 
 }
