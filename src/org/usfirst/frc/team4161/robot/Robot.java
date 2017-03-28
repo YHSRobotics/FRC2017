@@ -27,6 +27,8 @@ import org.usfirst.frc.team4161.robot.subsystems.Sweeper;
  */
 public class Robot extends IterativeRobot {
 
+	public static final double BODY_WIDTH = .8;//@TODO: Verify Accuracy
+	
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final Shooter shooter = new Shooter();
 	public static final Sweeper sweeper = new Sweeper();
@@ -108,7 +110,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		SmartDashboard.putNumber("Ultrasonic: ", RobotMap.ultrasonic.getMDistance());
+		SmartDashboard.putNumber("L Ultrasonic: ", RobotMap.lUltrasonic.getMDistance());
+		SmartDashboard.putNumber("R Ultrasonic: ", RobotMap.rUltrasonic.getMDistance());
 		Scheduler.getInstance().run();
 	}
 
