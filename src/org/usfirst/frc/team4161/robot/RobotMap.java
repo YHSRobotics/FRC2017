@@ -2,6 +2,7 @@ package org.usfirst.frc.team4161.robot;
 
 import org.usfirst.frc.team4161.robot.sensors.UltrasonicSensor;
 
+import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Spark;
 //import edu.wpi.first.wpilibj.Victor;
@@ -32,5 +33,7 @@ public class RobotMap {
 	
 	public static Talon shooterMotor = new Talon(ShooterMotorID), sweeperMotor = new Talon(SweeperMotorID);
 	
-	public static UltrasonicSensor ultrasonic = new UltrasonicSensor(new AnalogInput(0)); 
+	public static UltrasonicSensor ultrasonic = new UltrasonicSensor(new AnalogInput(0));
+	
+	public static AnalogGyro gyro = new AnalogGyro(0);
 }
