@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4161.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
 import org.usfirst.frc.team4161.robot.commands.JoystickShooterControl;
@@ -37,7 +38,7 @@ public class Robot extends IterativeRobot {
 
 	Command autonomousCommand;
 	Command driveWithJoystick, joystickActuatorControl;
-	SendableChooser<Command> chooser = new SendableChooser<>();
+	SendableChooser startPosChooser;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -48,8 +49,12 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		RobotMap.RWheels.setInverted(true);//invert the right side.
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", chooser);
 //		SmartDashboard.putData("Drive With Joystick", new DriveWithJoystick(OI.DriveJoystick));
+		
+
+		startPosChooser = new SendableChooser();
+		startPosChooser.addDefault("Straight Forward", 6);
+		startPosChooser.addObject("No Autonomous", 7);
 		
 		//set the two buttons for hopper actuator control
 		OI.lowHopperActuator.whileHeld(new SpinHopperActuator(0.75));
@@ -91,18 +96,11 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		autonomousCommand = chooser.getSelected();
-
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
-//		if (autonomousCommand != null)
-//			autonomousCommand.start();
+		int startPos = (Integer) startPosChooser.getSelected();
+		autonomousCommand = new AutonomousCommand(startPos);
+		System.out.println("Autonomous started: Auto mode: " + startPos);
+		Scheduler.getInstance().removeAll();
+		autonomousCommand.start();
 	}
 
 	/**
