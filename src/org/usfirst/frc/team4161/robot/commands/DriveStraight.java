@@ -13,7 +13,7 @@ public class DriveStraight extends Command {
 
 	private DriveTrain driveTrain = Robot.driveTrain;
 
-	private int ticks, startTicks, accelerationThreshold = 50;
+	private int ticks;
 	private boolean backwards;
 	private double maxPower;
 	private Preferences prefs = null;
@@ -41,7 +41,6 @@ public class DriveStraight extends Command {
 		requires(driveTrain);
 		this.prefs = prefs;
 		ticks = 1;
-		startTicks = 1;
 	}
 	
 	/**
@@ -58,7 +57,6 @@ public class DriveStraight extends Command {
 		requires(driveTrain);
 		this.ticks = ticks;
 		this.maxPower = maxPower;
-		startTicks = ticks;
 //		if (maxPower < 0) {
 //			maxPower = -1 * maxPower;// make the power positive.
 //			backwards = true;// go backwards
@@ -77,7 +75,6 @@ public class DriveStraight extends Command {
 			} else
 				backwards = false;
 		}
-		startTicks = ticks;
 		System.out.println("DriveStraight: Commanded to drive straight for "
 				+ ticks + " ticks at " + maxPower);
 	}
@@ -86,21 +83,8 @@ public class DriveStraight extends Command {
 	protected void execute() {
 		double regPower = backwards ? -maxPower : maxPower;// get 'regular'
 																// power.
-		if ((ticks <= accelerationThreshold) && (ticks < (startTicks - ticks))) {// don't
-																				// decelerate
-																				// too
-																				// fast.
-			double reductionFactor = ticks / accelerationThreshold;
-			regPower *= reductionFactor;
-		} else if ((startTicks - ticks) <= accelerationThreshold) {// don't
-																	// accelerate
-																	// too fast.
-			double reductionFactor = (startTicks - ticks)
-					/ accelerationThreshold;
-			regPower *= reductionFactor;
-		}
 		
-		driveTrain.setDrive(regPower, regPower);// go straight.
+		driveTrain.setDrive(maxPower, maxPower);// go straight.
 		//System.out.println(maxPower);
 		ticks--;
 	}
@@ -113,8 +97,7 @@ public class DriveStraight extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		driveTrain.setDrive(0, 0);
-		System.out.println("DriveStraight: Drove Straight for " + startTicks
-				+ " ticks. DONE!");
+		System.out.println("DriveStraight: Drove Straight. DONE!");
 	}
 
 	// Called when another command which requires one or more of the same

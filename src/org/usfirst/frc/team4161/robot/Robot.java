@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
 		
 		//set up autonomous chooser
 		chooser.addDefault("No Autonomous", null);
-		chooser.addObject("Drive Straight", new DriveStraight(10, true));
+		chooser.addObject("Drive Straight", new DriveStraight(100, true));
 		
 	}
 
@@ -95,7 +95,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		autonomousCommand = chooser.getSelected();
-
+		System.out.println("Running auto: " + autonomousCommand);
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
