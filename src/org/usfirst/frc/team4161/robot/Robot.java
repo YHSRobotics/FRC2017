@@ -113,7 +113,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		SmartDashboard.putNumber("Ultrasonic: ", RobotMap.ultrasonic.getMDistance());
+		SmartDashboard.putNumber("Avg Ultrasonic: ", (RobotMap.lUltrasonic.getMDistance()+RobotMap.rUltrasonic.getMDistance()/2));
 		Scheduler.getInstance().run();
 	}
 

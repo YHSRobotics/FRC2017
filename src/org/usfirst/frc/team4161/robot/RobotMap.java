@@ -32,5 +32,6 @@ public class RobotMap {
 	
 	public static Talon shooterMotor = new Talon(ShooterMotorID), sweeperMotor = new Talon(SweeperMotorID);
 	
-	public static UltrasonicSensor ultrasonic = new UltrasonicSensor(new AnalogInput(0)); 
+	public static UltrasonicSensor lUltrasonic = new UltrasonicSensor(new AnalogInput(0)),
+			rUltrasonic = new UltrasonicSensor(new AnalogInput(1)); 
 }
