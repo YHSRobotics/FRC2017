@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4161.robot.commands.DriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
 import org.usfirst.frc.team4161.robot.commands.JoystickShooterControl;
@@ -59,6 +60,10 @@ public class Robot extends IterativeRobot {
 		//backwards sweeper (partial power) control.
 		OI.sweeperReverseButton.whileHeld(new JoystickSweeperControl(OI.LJoystick, 1/2, true));
 		
+		//set up autonomous chooser
+		chooser.addDefault("No Autonomous", null);
+		chooser.addObject("Drive Straight", new DriveStraight(10, true));
+		
 	}
 
 	/**
@@ -99,8 +104,8 @@ public class Robot extends IterativeRobot {
 		 */
 
 		// schedule the autonomous command (example)
-//		if (autonomousCommand != null)
-//			autonomousCommand.start();
+		if (autonomousCommand != null)
+			autonomousCommand.start();
 	}
 
 	/**
