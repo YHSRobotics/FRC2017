@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4161.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -14,6 +15,7 @@ import org.usfirst.frc.team4161.robot.commands.JoystickShooterControl;
 import org.usfirst.frc.team4161.robot.commands.JoystickSweeperControl;
 import org.usfirst.frc.team4161.robot.commands.KickbackAndShoot;
 import org.usfirst.frc.team4161.robot.commands.SpinHopperActuator;
+import org.usfirst.frc.team4161.robot.commands.TurnRobot;
 import org.usfirst.frc.team4161.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4161.robot.subsystems.HopperActuator;
 import org.usfirst.frc.team4161.robot.subsystems.Shooter;
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	Command driveWithJoystick, joystickActuatorControl;
 	SendableChooser<Command> chooser = new SendableChooser<>();
+	Preferences prefs;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -44,6 +47,9 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
+		
+		prefs = Preferences.getInstance();
+		
 		oi = new OI();
 		RobotMap.RWheels.setInverted(true);//invert the right side.
 		// chooser.addObject("My Auto", new MyAutoCommand());
@@ -63,6 +69,13 @@ public class Robot extends IterativeRobot {
 		//set up autonomous chooser
 		chooser.addDefault("No Autonomous", null);
 		chooser.addObject("Drive Straight", new DriveStraight(100, true));
+		
+//		prefs.putInt("DriveTickCount", 100);
+//		prefs.putInt("TurnTickCount", 100);
+		SmartDashboard.putData("Drive for x ticks", new DriveStraight(prefs));
+		SmartDashboard.putData("Turn for x ticks", new TurnRobot(prefs));
+
+
 		
 	}
 
@@ -141,6 +154,9 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 
+		SmartDashboard.putNumber("L Ultrasonic: ", RobotMap.lUltrasonic.getMDistance());
+		SmartDashboard.putNumber("R Ultrasonic: ", RobotMap.rUltrasonic.getMDistance());
+		SmartDashboard.putNumber("Avg Ultrasonic: ", (RobotMap.lUltrasonic.getMDistance()+RobotMap.rUltrasonic.getMDistance())/2);
 		SmartDashboard.putNumber("Sweeper Speed ", RobotMap.sweeperMotor.getSpeed());
 		SmartDashboard.putNumber("Shooter Speed ", RobotMap.shooterMotor.getSpeed());
 		Scheduler.getInstance().run();
