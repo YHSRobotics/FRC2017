@@ -13,7 +13,7 @@ public class DriveStraight extends Command {
 
 	private DriveTrain driveTrain = Robot.driveTrain;
 
-	private int ticks;
+	private int ticks, startTicks;
 	private boolean backwards;
 	private double maxPower;
 	private Preferences prefs = null;
@@ -69,6 +69,7 @@ public class DriveStraight extends Command {
 	public DriveStraight(int ticks, double maxPower) {
 		requires(driveTrain);
 		this.ticks = ticks;
+		startTicks = ticks;
 		this.maxPower = maxPower;
 //		if (maxPower < 0) {
 //			maxPower = -1 * maxPower;// make the power positive.
@@ -109,7 +110,7 @@ public class DriveStraight extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		driveTrain.setDrive(0, 0);
-		System.out.println("DriveStraight: Drove Straight. DONE!");
+		System.out.println("DriveStraight: Drove Straight for " + startTicks + ". DONE!");
 	}
 
 	// Called when another command which requires one or more of the same
