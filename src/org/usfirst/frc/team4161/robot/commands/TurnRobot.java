@@ -17,7 +17,7 @@ public class TurnRobot extends Command {
 	// accelerationThreshold prevents the robot from going from 0 to full
 	// acceleration too fast. The higher the value, the longer the robot will
 	// take to speed up.
-	private final double accelerationThreshold = 100;
+	private double power;
 	private DriveTrain driveTrain = Robot.driveTrain;
 	private Preferences prefs = null;
 
@@ -33,13 +33,30 @@ public class TurnRobot extends Command {
 	 * 
 	 */
 	public TurnRobot(int ticks, boolean turnRight) {
+		this(ticks, turnRight, .5);
+	}
+
+	/**
+	 * Turn the robot for a number of ticks. If turnRight is true, the robot
+	 * will turn to the right, else it will turn left.
+	 * 
+	 * @param ticks
+	 *            number of ticks to turn for. A negative value will be ignored
+	 *            and set to positive.
+	 * @param turnRight
+	 *            if true, the robot will turn right.
+	 * @param power The power to turn the drivetrain at, in range [0,1]
+	 * 
+	 */
+	public TurnRobot(int ticks, boolean turnRight, double power) {
+
 		requires(driveTrain);
 		ticks = (ticks < 0) ? -ticks : ticks;// check for negative.
 		this.ticks = ticks;
 		this.turnRight = turnRight;
+		this.power = Math.abs(power);
 		startTicks = ticks;
-		System.out.println("TurnRobot: Robot turning for " + ticks
-				+ " ticks isRight: " + turnRight);
+		System.out.println("TurnRobot: Robot turning for " + ticks + " ticks isRight: " + turnRight);
 
 	}
 
@@ -51,8 +68,7 @@ public class TurnRobot extends Command {
 	 *            degrees to turn.
 	 */
 	public TurnRobot(double degrees) {
-		this(ConversionFactor.driveDegreesToTick(degrees), 
-				(degrees>0)?true:false);
+		this(ConversionFactor.driveDegreesToTick(degrees), (degrees > 0) ? true : false);
 	}
 
 	/**
@@ -85,18 +101,6 @@ public class TurnRobot extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		double power = 1;// assume power of 1
-
-		if (ticks <= accelerationThreshold && ticks < (startTicks - ticks)) {
-			// don't decelerate too fast
-			double reductionFactor = ticks / accelerationThreshold;
-			power *= reductionFactor;
-		} else if (startTicks - ticks <= accelerationThreshold) {
-			// don't accelerate too fast.
-			double reductionFactor = (startTicks - ticks)
-					/ accelerationThreshold;
-			power *= reductionFactor;
-		}
 
 		if (turnRight)// turn right
 			driveTrain.setDrive(power, -power);
@@ -114,8 +118,7 @@ public class TurnRobot extends Command {
 	// Called once after isFinished returns true
 	protected void end() {
 		driveTrain.setDrive(0, 0);// stop the motors.
-		System.out.println("TurnRobot: Robot finished for " + startTicks
-				+ " ticks.");
+		System.out.println("TurnRobot: Robot finished for " + startTicks + " ticks.");
 	}
 
 	// Called when another command which requires one or more of the same
