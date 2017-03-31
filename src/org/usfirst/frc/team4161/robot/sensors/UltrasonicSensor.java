@@ -38,8 +38,7 @@ public class UltrasonicSensor {
 	 */
 	public double getMDistance(){
 		double distance = ultrasonic.getAverageVoltage();
-		distance *= scalingFactor;//scale to millimeters
-		System.out.println(distance);
+		distance *= scalingFactor;//scale to millimeters`
 		distance /= 1000;//scale to meters
 		return distance;
 	}
