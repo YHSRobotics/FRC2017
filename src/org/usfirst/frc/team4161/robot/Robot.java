@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4161.robot.commands.AutoTurnAndDriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveStraight;
 import org.usfirst.frc.team4161.robot.commands.DriveWithJoystick;
 import org.usfirst.frc.team4161.robot.commands.JoystickActuatorControl;
@@ -69,6 +70,7 @@ public class Robot extends IterativeRobot {
 		//set up autonomous chooser
 		chooser.addDefault("No Autonomous", null);
 		chooser.addObject("Drive Straight", new DriveStraight(50, true));
+		chooser.addObject("Turn & Drive Straight", new AutoTurnAndDriveStraight());
 		chooser.addObject("Shoot into boiler (CAUTON: BETA!)", new DriveStraight(50, true));
 		
 //		prefs.putInt("DriveTickCount", 100);
