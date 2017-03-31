@@ -45,7 +45,8 @@ public class TurnRobot extends Command {
 	 *            and set to positive.
 	 * @param turnRight
 	 *            if true, the robot will turn right.
-	 * @param power The power to turn the drivetrain at, in range [0,1]
+	 * @param power
+	 *            The power to turn the drivetrain at, in range [0,1]
 	 * 
 	 */
 	public TurnRobot(int ticks, boolean turnRight, double power) {
@@ -95,7 +96,8 @@ public class TurnRobot extends Command {
 			} else
 				turnRight = true;
 			startTicks = ticks;
-		}
+		} else
+			ticks = startTicks;
 		System.out.println("TurnRobot: Turning for " + ticks + " ticks");
 	}
 

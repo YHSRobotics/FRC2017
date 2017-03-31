@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 		
 		//set up autonomous chooser
 		chooser.addDefault("No Autonomous", null);
-		chooser.addObject("Drive Straight", new DriveStraight(50, true));
+		chooser.addObject("Drive Straight", new DriveStraight(70, true));
 		chooser.addObject("Turn & Drive Straight", new AutoTurnAndDriveStraight());
 		chooser.addObject("Shoot into boiler (CAUTON: BETA!)", new DriveStraight(50, true));
 		
