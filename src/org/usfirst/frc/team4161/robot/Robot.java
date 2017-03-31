@@ -68,7 +68,7 @@ public class Robot extends IterativeRobot {
 		
 		//set up autonomous chooser
 		chooser.addDefault("No Autonomous", null);
-		chooser.addObject("Drive Straight", new DriveStraight(100, true));
+		chooser.addObject("Drive Straight", new DriveStraight(50, true));
 		
 //		prefs.putInt("DriveTickCount", 100);
 //		prefs.putInt("TurnTickCount", 100);
