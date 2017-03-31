@@ -17,6 +17,7 @@ public class AutoShoot extends CommandGroup {
     	addSequential(new TurnRobot(20,false,0.25));
     	addSequential(new TurnRobot(20,true,0.25));
     	addSequential(new TurnRobot(20,false,0.25));
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
